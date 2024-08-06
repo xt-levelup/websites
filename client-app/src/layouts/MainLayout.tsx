@@ -1,7 +1,7 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 
 const MainLayout = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   return (
     <div>
       <nav>NAV</nav>
