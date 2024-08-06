@@ -13,8 +13,12 @@ const Home = () => {
         </video>
         <img width="100%" src={imageBackground} />
       </div>
-      <div className="absolute box-border mx-auto left-0 top-0 w-full h-full bg-emerald-900/60 border-[3px] border-green-600">
-        <h2>The smartest way to manage your data</h2>
+      <div className="absolute flex flex-col items-center box-border mx-auto left-0 top-0 w-full h-full bg-emerald-900/60 border-[3px] border-green-600">
+        <div className="text-white border-[1px] border-solid border-blue-600 w-[450px] h-[100vh] flex flex-col items-center justify-center">
+          <h2 className="text-[48px] text-center">
+            The smartest way to manage your data
+          </h2>
+        </div>
       </div>
     </div>
   );
