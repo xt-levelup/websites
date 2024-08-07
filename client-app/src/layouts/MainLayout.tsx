@@ -4,8 +4,8 @@ const MainLayout = () => {
   // const navigate = useNavigate();
   return (
     <div>
-      <nav className="mx-[5%] p-[1em] bg-blue-900 border border-[1px] border-blue-600 flex flex-row items-center justify-between">
-        <div className="flex flex-row justify-center items-center">
+      <nav className="mx-[5%] p-[1em] bg-blue-900 flex flex-row gap-[1em] items-center justify-between">
+        <div className="w-[40%] flex flex-row justify-start items-center">
           <svg
             width="48px"
             height="48px"
@@ -44,16 +44,16 @@ const MainLayout = () => {
             />
           </svg>
           <span className="text-[36px] text-cyan-300 italic font-[600]">
-            - Design
+            - Web Design
           </span>
         </div>
-        <div className="border border-[3px] border-green-600 w-[80%] flex flex-row items-center gap-[5%] justify-end">
+        <div className="w-[60%] flex flex-row items-center gap-[5%] justify-end">
           <NavLink
             to="/"
             className={({ isActive }) => {
               return isActive
                 ? "font-[600] text-cyan-100 italic text-[24px]"
-                : "font-[480] text-[24px] hover:overline text-cyan-300 italic ";
+                : "font-[480] text-[24px] hover:overline hover:text-lime-300 text-cyan-300 italic ";
             }}
             end
           >
@@ -64,7 +64,7 @@ const MainLayout = () => {
             className={({ isActive }) => {
               return isActive
                 ? "font-[600] text-cyan-100 italic text-[24px]"
-                : "font-[480] text-[24px] hover:overline text-cyan-300 italic ";
+                : "font-[480] text-[24px] hover:overline hover:text-lime-300 text-cyan-300 italic ";
             }}
             end
           >
@@ -75,7 +75,7 @@ const MainLayout = () => {
             className={({ isActive }) => {
               return isActive
                 ? "font-[600] text-cyan-100 italic text-[24px]"
-                : "font-[480] text-[24px] hover:overline text-cyan-300 italic ";
+                : "font-[480] text-[24px] hover:overline hover:text-lime-300 text-cyan-300 italic ";
             }}
             end
           >
@@ -86,7 +86,7 @@ const MainLayout = () => {
             className={({ isActive }) => {
               return isActive
                 ? "font-[600] text-cyan-100 italic text-[24px]"
-                : "font-[480] text-[24px] hover:overline text-cyan-300 italic ";
+                : "font-[480] text-[24px] hover:overline hover:text-lime-300 text-cyan-300 italic ";
             }}
             end
           >
@@ -97,7 +97,7 @@ const MainLayout = () => {
             className={({ isActive }) => {
               return isActive
                 ? "font-[600] text-cyan-100 italic text-[24px]"
-                : "font-[480] text-[24px] hover:overline text-cyan-300 italic ";
+                : "font-[480] text-[24px] hover:overline hover:text-lime-300 text-cyan-300 italic ";
             }}
             end
           >
