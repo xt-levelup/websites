@@ -5,6 +5,7 @@ import imageBackground from "../images/background.png";
 // import pointRight from "../images/point-right.png";
 const Home = () => {
   const [adverse, setAdverse] = useState<JSX.Element | null>(null);
+  const [guaranty, setGuaranty] = useState<JSX.Element | null>(null);
   const [topStyles, setTopStyles] = useState<JSX.Element | null>(null);
 
   useEffect(() => {
@@ -202,6 +203,15 @@ const Home = () => {
   useEffect(() => {
     const topStylesHandle = () => {
       if (window.scrollY >= 210 && !topStyles) {
+        setGuaranty(
+          <div className="w-full h-[150px] italic p-[1%] text-white text-[30px] bg-blue-900/80 items-center my-[2em] grid grid-cols-3">
+            <h3 className="text-center">
+              Similar technology to Facebook | Google
+            </h3>
+            <h3 className="text-center">Price optionals</h3>
+            <h3 className="text-center">3 months editing support</h3>
+          </div>
+        );
         setTopStyles(
           <div className="w-full flex flex-col px-[3%] text-white border border-[3px] border-blue-900">
             <h2 className="text-[36px] font-[600] italic">Top Styles</h2>
@@ -239,6 +249,7 @@ const Home = () => {
       </div>
       <div className="absolute flex flex-col items-center box-border mx-auto left-0 top-0 w-full h-full bg-blue-950/60">
         {adverse}
+        {guaranty}
         {topStyles}
       </div>
     </div>
