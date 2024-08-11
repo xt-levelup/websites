@@ -8,7 +8,7 @@ const AddProducts: FC = () => {
         <title>AddProducts</title>
       </Helmet>
       <div className="w-full border border-[3px] border-green-600">
-        <form className="flex flex-col gap-[2em] rounded-[12px] shadow-md shadow-blue-900/80 p-[1em] mx-auto w-[510px] my-[3em]">
+        <form className="flex flex-col gap-[2em] rounded-[12px] shadow-md shadow-[6px_6px_6px_6px_rgba(0,0,0,0.2)] p-[1em] mx-auto w-[510px] my-[3em]">
           <div className="grid grid-cols-[72px_1fr] items-center gap-[1em] w-full">
             <label htmlFor="title">Title</label>
             <input
