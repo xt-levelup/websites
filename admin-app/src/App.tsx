@@ -20,6 +20,9 @@ const Users = lazy(() => {
 const Products = lazy(() => {
   return import("./pages/Products");
 });
+const AddProducts = lazy(() => {
+  return import("./pages/AddProducts");
+});
 
 const App: FC = () => {
   const loading: JSX.Element = (
@@ -44,6 +47,14 @@ const App: FC = () => {
           element: (
             <Suspense fallback={loading}>
               <Products />
+            </Suspense>
+          ),
+        },
+        {
+          path: "/add-products",
+          element: (
+            <Suspense fallback={loading}>
+              <AddProducts />
             </Suspense>
           ),
         },

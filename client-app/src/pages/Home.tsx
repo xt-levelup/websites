@@ -287,7 +287,7 @@ const Home = () => {
     const topStylesHandle = () => {
       if (window.scrollY >= 210 && !topStyles) {
         setGuaranty(
-          <div className="w-full h-[150px] italic p-[1%] text-white text-[30px] bg-blue-900/80 items-center my-[2em] grid grid-cols-3">
+          <div className="w-full h-[150px] italic p-[1%] text-white text-[30px] bg-blue-900/80 items-center my-[1em] grid grid-cols-3">
             <h3 className="text-center">
               <span>Powerful technology</span>
               <span className="text-[24px] flex flex-rows items-center justify-center gap-[1em]">
