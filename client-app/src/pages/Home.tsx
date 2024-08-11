@@ -323,7 +323,7 @@ const Home = () => {
   }, [topStyles]);
 
   return (
-    <div className="relative mx-[5%]">
+    <div className="relative px-[5%] max-w-7xl mx-auto">
       <Helmet>
         <title>Home Page - Design Websites</title>
       </Helmet>

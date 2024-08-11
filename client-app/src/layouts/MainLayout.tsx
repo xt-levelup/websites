@@ -4,7 +4,7 @@ const MainLayout = () => {
   // const navigate = useNavigate();
   return (
     <div>
-      <nav className="mx-[5%] p-[1em] bg-blue-900 flex flex-row gap-[1em] items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-[5%] p-[1em] bg-blue-900 flex flex-row gap-[1em] items-center justify-between">
         <div className="w-[40%] flex flex-row justify-start items-center">
           <svg
             width="48px"
