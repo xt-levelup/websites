@@ -32,6 +32,7 @@ export const addProduct = (req: Request, res: Response, next: NextFunction) => {
       .then((product) => {
         res.status(201).json({
           message: "Add product successfuly!",
+          product: product,
         });
       })
       .catch((err) => {

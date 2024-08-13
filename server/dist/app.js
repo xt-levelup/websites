@@ -4,10 +4,42 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const path_1 = __importDefault(require("path"));
+const body_parser_1 = require("body-parser");
+const cors_1 = __importDefault(require("cors"));
 const mongoose_1 = __importDefault(require("mongoose"));
+const multer_1 = __importDefault(require("multer"));
+const admin_1 = __importDefault(require("./routes/admin"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
+app.use(express_1.default.static(path_1.default.join(__dirname, "images")));
+app.use((0, cors_1.default)());
+const fileStorage = multer_1.default.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "src/images");
+    },
+    filename: (req, file, cb) => {
+        const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+        cb(null, uniqueSuffix + "-" + file.originalname);
+    },
+});
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === "image/png" ||
+        file.mimetype === "image/jpg" ||
+        file.mimetype === "image/jpeg") {
+        cb(null, true);
+    }
+    else {
+        cb(null, false);
+    }
+};
+app.use((0, body_parser_1.json)());
+app.use((0, multer_1.default)({
+    storage: fileStorage,
+    fileFilter: fileFilter,
+}).array("imageFiles", 5));
+app.use(admin_1.default);
 const mongodbUrl = "mongodb+srv://xitrumvndn5:2991981DBok@cluster0.jwcb9.mongodb.net/shop";
 mongoose_1.default
     .connect(mongodbUrl)
