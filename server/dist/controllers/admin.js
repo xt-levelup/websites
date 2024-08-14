@@ -11,6 +11,12 @@ const addProduct = (req, res, next) => {
     const imageFiles = req.files;
     const userId = req.body.userId;
     const category = req.body.category;
+    let imgUrl = [];
+    if (imageFiles && imageFiles.length > 0) {
+        imgUrl = imageFiles.map((file) => {
+            return file.path;
+        });
+    }
     console.log("title:", title);
     console.log("desc:", desc);
     console.log("imageFiles:", imageFiles);
@@ -25,7 +31,7 @@ const addProduct = (req, res, next) => {
         const newProduct = new product_1.default({
             title: title,
             desc: desc,
-            imageUrls: imageFiles,
+            imgUrls: imgUrl,
             addBy: userId,
             category: category,
         });

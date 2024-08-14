@@ -22,8 +22,7 @@ const productSchema = new Schema({
         required: true,
     },
     addBy: {
-        type: Schema.Types.ObjectId,
-        ref: "Users",
+        type: String,
         required: true,
     },
 });

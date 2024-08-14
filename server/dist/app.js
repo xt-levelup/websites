@@ -17,7 +17,7 @@ app.use(express_1.default.static(path_1.default.join(__dirname, "images")));
 app.use((0, cors_1.default)());
 const fileStorage = multer_1.default.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "src/images");
+        cb(null, "dist/images");
     },
     filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
@@ -25,12 +25,16 @@ const fileStorage = multer_1.default.diskStorage({
     },
 });
 const fileFilter = (req, file, cb) => {
-    if (file.mimetype === "image/png" ||
-        file.mimetype === "image/jpg" ||
-        file.mimetype === "image/jpeg") {
+    var _a;
+    const fileExtension = (_a = file.originalname.split(".").pop()) === null || _a === void 0 ? void 0 : _a.toLowerCase();
+    if (fileExtension === "png" ||
+        fileExtension === "jpg" ||
+        fileExtension === "jpeg") {
+        console.log("Added images!");
         cb(null, true);
     }
     else {
+        console.log("Did not add images!");
         cb(null, false);
     }
 };

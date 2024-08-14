@@ -2,11 +2,27 @@ import { NextFunction, Request, Response } from "express";
 import Product from "../models/product";
 
 export const addProduct = (req: Request, res: Response, next: NextFunction) => {
-  const title: string = req.body.title;
-  const desc: string = req.body.desc;
-  const imageFiles = req.files as Express.Multer.File[];
-  const userId: string = req.body.userId;
-  const category: string = req.body.category;
+  interface FormTypes {
+    title: string;
+    desc: string;
+    imageFiles: Express.Multer.File[];
+    userId: string;
+    category: string;
+  }
+
+  const title = <FormTypes["title"]>req.body.title;
+  const desc = <FormTypes["desc"]>req.body.desc;
+  const imageFiles = <FormTypes["imageFiles"]>req.files;
+  const userId = <FormTypes["userId"]>req.body.userId;
+  const category = <FormTypes["category"]>req.body.category;
+
+  let imgUrl: string[] = [];
+
+  if (imageFiles && imageFiles.length > 0) {
+    imgUrl = imageFiles.map((file) => {
+      return file.path;
+    });
+  }
 
   console.log("title:", title);
   console.log("desc:", desc);
@@ -22,7 +38,7 @@ export const addProduct = (req: Request, res: Response, next: NextFunction) => {
     const newProduct = new Product({
       title: title,
       desc: desc,
-      imageUrls: imageFiles,
+      imgUrls: imgUrl,
       addBy: userId,
       category: category,
     });

@@ -21,7 +21,7 @@ const fileStorage = multer.diskStorage({
     file: Express.Multer.File,
     cb: (error: Error | null, destination: string) => void
   ) => {
-    cb(null, "src/images");
+    cb(null, "dist/images");
   },
   filename: (
     req: Request,
@@ -38,13 +38,16 @@ const fileFilter = (
   file: Express.Multer.File,
   cb: FileFilterCallback
 ) => {
+  const fileExtension = file.originalname.split(".").pop()?.toLowerCase();
   if (
-    file.mimetype === "image/png" ||
-    file.mimetype === "image/jpg" ||
-    file.mimetype === "image/jpeg"
+    fileExtension === "png" ||
+    fileExtension === "jpg" ||
+    fileExtension === "jpeg"
   ) {
+    console.log("Added images!");
     cb(null, true);
   } else {
+    console.log("Did not add images!");
     cb(null, false);
   }
 };

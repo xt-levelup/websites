@@ -4,7 +4,8 @@ import { Helmet } from "react-helmet";
 const AddProducts: FC = () => {
   interface FormValue {
     title: string;
-    type: string;
+    category: string;
+    desc: string;
     images: File[];
     userId?: string;
     productId?: string;
@@ -12,28 +13,32 @@ const AddProducts: FC = () => {
   }
 
   const [title, setTitle] = useState<FormValue["title"]>("");
-  const [category, setCategory] = useState<FormValue["type"]>("");
+  const [category, setCategory] = useState<FormValue["category"]>("");
+  const [desc, setDesc] = useState<FormValue["desc"]>("");
   const [images, setImages] = useState<FormValue["images"]>([]);
   const [userId, setUserId] = useState<FormValue["userId"]>(undefined);
   const [productId, setProductId] = useState<FormValue["productId"]>(undefined);
   const [responseError, setResponseError] =
     useState<FormValue["responseMessageError"]>();
 
+  useEffect(() => {
+    setUserId("123456789");
+  }, []);
+
   const titleHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
-    console.log("title event.target.value:", event.target.value);
+  };
+  const descHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setDesc(event.target.value);
   };
 
   const categoryHandler = (event: ChangeEvent<HTMLSelectElement>) => {
     setCategory(event.target.value);
-    console.log("type event.target.value:", event.target.value);
   };
 
   const imagesHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const uploadImages = Array.from(event.target.files || []);
-    // console.log("typeof uploadImages:", typeof uploadImages);
     setImages(uploadImages);
-    console.log("uploadImages:", uploadImages);
   };
 
   const addProductHandler = async (
@@ -46,6 +51,7 @@ const AddProducts: FC = () => {
     const formData = new FormData();
 
     formData.append("title", title);
+    formData.append("desc", desc);
     formData.append("category", category);
     //--- Không cho undefined vào formData nên phải lọc trước
     if (userId) {
@@ -61,14 +67,14 @@ const AddProducts: FC = () => {
       }
     }
 
-    console.log("images:", images);
-
     const response = await fetch(urlServer, {
       method: "POST",
       body: formData,
     });
 
     const data = await response.json();
+
+    console.log("data response:", data);
 
     if (!response.ok) {
       setResponseError(data.message ? data.message : "Cannot add product now!");
@@ -77,6 +83,19 @@ const AddProducts: FC = () => {
       console.log("data add product successfully:", data);
     }
   };
+
+  useEffect(() => {
+    console.log("title:", title);
+  }, [title]);
+  useEffect(() => {
+    console.log("desc:", desc);
+  }, [desc]);
+  useEffect(() => {
+    console.log("category:", category);
+  }, [category]);
+  useEffect(() => {
+    console.log("images:", images);
+  }, [images]);
 
   return (
     <div>
@@ -93,6 +112,15 @@ const AddProducts: FC = () => {
               id="title"
               onChange={titleHandler}
               value={title}
+            />
+          </div>
+          <div className="grid grid-cols-[72px_1fr] items-center gap-[1em] w-full">
+            <label htmlFor="desc">Description</label>
+            <textarea
+              className="px-[6px] h-[90px] rounded-[3px] border border-[1px] border-blue-300"
+              id="desc"
+              onChange={descHandler}
+              value={desc}
             />
           </div>
 
