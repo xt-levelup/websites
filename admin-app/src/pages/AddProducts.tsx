@@ -23,6 +23,7 @@ const AddProducts: FC = () => {
 
   useEffect(() => {
     setUserId("123456789");
+    setProductId(undefined);
   }, []);
 
   const titleHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -96,6 +97,9 @@ const AddProducts: FC = () => {
   useEffect(() => {
     console.log("images:", images);
   }, [images]);
+  useEffect(() => {
+    console.log("responseError:", responseError);
+  }, [responseError]);
 
   return (
     <div>
