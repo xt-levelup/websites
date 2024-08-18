@@ -5,6 +5,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import multer, { diskStorage, FileFilterCallback } from "multer";
 import adminRoutes from "./routes/admin";
+import productRoutes from "./routes/product";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -62,6 +63,7 @@ app.use(
 );
 
 app.use(adminRoutes);
+app.use(productRoutes);
 
 const mongodbUrl =
   "mongodb+srv://xitrumvndn5:2991981DBok@cluster0.jwcb9.mongodb.net/shop";

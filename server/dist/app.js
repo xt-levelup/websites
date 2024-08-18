@@ -10,6 +10,7 @@ const cors_1 = __importDefault(require("cors"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const multer_1 = __importDefault(require("multer"));
 const admin_1 = __importDefault(require("./routes/admin"));
+const product_1 = __importDefault(require("./routes/product"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
@@ -44,6 +45,7 @@ app.use((0, multer_1.default)({
     fileFilter: fileFilter,
 }).array("imageFiles", 5));
 app.use(admin_1.default);
+app.use(product_1.default);
 const mongodbUrl = "mongodb+srv://xitrumvndn5:2991981DBok@cluster0.jwcb9.mongodb.net/shop";
 mongoose_1.default
     .connect(mongodbUrl)
