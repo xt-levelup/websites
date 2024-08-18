@@ -22,7 +22,7 @@ app.use("/images", express_1.default.static(imagesPath));
 // --------------------------------------------------
 const fileStorage = multer_1.default.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "dist/images");
+        cb(null, imagesPath);
     },
     filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);

@@ -20,7 +20,10 @@ export const addProduct = (req: Request, res: Response, next: NextFunction) => {
 
   if (imageFiles && imageFiles.length > 0) {
     imgUrl = imageFiles.map((file) => {
-      const correctFilePath = file.path.replace("dist\\", "");
+      const correctFilePath = file.path.replace(
+        "E:\\developer-E\\own-websites\\name-websties\\server\\dist\\",
+        ""
+      );
       console.log("correctFilePath:", correctFilePath);
       return correctFilePath;
     });
