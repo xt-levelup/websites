@@ -20,7 +20,9 @@ export const addProduct = (req: Request, res: Response, next: NextFunction) => {
 
   if (imageFiles && imageFiles.length > 0) {
     imgUrl = imageFiles.map((file) => {
-      return file.path;
+      const correctFilePath = file.path.replace("dist\\", "");
+      console.log("correctFilePath:", correctFilePath);
+      return correctFilePath;
     });
   }
 

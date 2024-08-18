@@ -12,9 +12,15 @@ dotenv.config();
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, "images")));
-
 app.use(cors());
+
+// --- Cho phép client truy cập thư mục images-------
+const imagesPath = path.join(__dirname, "images");
+
+console.log("Static images path:", imagesPath); // Test đường dẫn
+
+app.use("/images", express.static(imagesPath));
+// --------------------------------------------------
 
 const fileStorage = multer.diskStorage({
   destination: (

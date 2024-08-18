@@ -135,6 +135,7 @@ const AddProducts: FC = () => {
               onChange={categoryHandler}
               value={category}
             >
+              <option>Choose a catagory</option>
               <option>Coffee - Drinks</option>
               <option>Restaurant</option>
               <option>Resort - Hotel</option>

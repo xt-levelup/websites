@@ -5,7 +5,12 @@ import { useState, useEffect } from "react";
 const Products: FC = () => {
   interface fetchProductValue {
     errorFetch: string | null;
-    products: object[];
+    products: [];
+  }
+
+  interface Product {
+    _id: string;
+    imgUrls: string[];
   }
 
   const [errorFetch, setErrorFetch] =
@@ -50,7 +55,21 @@ const Products: FC = () => {
       <Helmet>
         <title>Products</title>
       </Helmet>
-      <div>Products</div>
+      <div>
+        {products &&
+          products.length > 1 &&
+          products.map((product: Product) => {
+            return (
+              <div key={product._id}>
+                <img
+                  src={`http://localhost:5000/${product.imgUrls[0]}`}
+                  width="120px"
+                  height="120px"
+                />
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 };

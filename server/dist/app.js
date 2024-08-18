@@ -14,8 +14,12 @@ const product_1 = __importDefault(require("./routes/product"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
-app.use(express_1.default.static(path_1.default.join(__dirname, "images")));
 app.use((0, cors_1.default)());
+// --- Cho phép client truy cập thư mục images-------
+const imagesPath = path_1.default.join(__dirname, "images");
+console.log("Static images path:", imagesPath); // Test đường dẫn
+app.use("/images", express_1.default.static(imagesPath));
+// --------------------------------------------------
 const fileStorage = multer_1.default.diskStorage({
     destination: (req, file, cb) => {
         cb(null, "dist/images");

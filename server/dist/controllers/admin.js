@@ -14,7 +14,9 @@ const addProduct = (req, res, next) => {
     let imgUrl = [];
     if (imageFiles && imageFiles.length > 0) {
         imgUrl = imageFiles.map((file) => {
-            return file.path;
+            const correctFilePath = file.path.replace("dist\\", "");
+            console.log("correctFilePath:", correctFilePath);
+            return correctFilePath;
         });
     }
     console.log("title:", title);
