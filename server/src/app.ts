@@ -22,7 +22,7 @@ console.log("Static images path:", imagesPath); // Test đường dẫn
 app.use("/images", express.static(imagesPath));
 // --------------------------------------------------
 
-const fileStorage = multer.diskStorage({
+const fileStorage = diskStorage({
   destination: (
     req: Request,
     file: Express.Multer.File,
@@ -71,8 +71,13 @@ app.use(
 app.use(adminRoutes);
 app.use(productRoutes);
 
-const mongodbUrl =
-  "mongodb+srv://xitrumvndn5:2991981DBok@cluster0.jwcb9.mongodb.net/shop";
+// --- File .env phải được đặt cùng thư mục package.json! ---
+const mongodbUrl = process.env.MONGO_URL;
+if (!mongodbUrl) {
+  throw new Error("mongodbUrl undefined!");
+}
+console.log("mongodbUrl:", mongodbUrl);
+// ----------------------------------------------------------
 
 mongoose
   .connect(mongodbUrl)
