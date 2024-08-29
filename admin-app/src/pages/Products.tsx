@@ -18,7 +18,7 @@ const Products: FC = () => {
   const [products, setProducts] = useState([]);
 
   const getProducts = async () => {
-    const urlServer = "http://localhost:5000/getProducts";
+    const urlServer = "https://xt-server-fgm1.onrender.com/getProducts";
     const response = await fetch(urlServer);
     const data = await response.json();
     console.log("getProducts data:", data);
@@ -62,7 +62,7 @@ const Products: FC = () => {
             return (
               <div key={product._id}>
                 <img
-                  src={`http://localhost:5000/${product.imgUrls[0]}`}
+                  src={`https://xt-server-fgm1.onrender.com/${product.imgUrls[0]}`}
                   width="120px"
                   height="120px"
                 />

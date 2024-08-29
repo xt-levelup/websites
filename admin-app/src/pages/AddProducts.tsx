@@ -1,5 +1,6 @@
 import { FC, useState, useEffect, ChangeEvent } from "react";
 import { Helmet } from "react-helmet";
+import { useNavigate } from "react-router-dom";
 
 const AddProducts: FC = () => {
   interface FormValue {
@@ -11,6 +12,8 @@ const AddProducts: FC = () => {
     productId?: string;
     responseMessageError: string | null;
   }
+
+  const navigate = useNavigate();
 
   const [title, setTitle] = useState<FormValue["title"]>("");
   const [category, setCategory] = useState<FormValue["category"]>("");
@@ -47,7 +50,8 @@ const AddProducts: FC = () => {
   ) => {
     event.preventDefault();
 
-    const urlServer = "http://localhost:5000/add-product";
+    const urlServer = "https://xt-server-fgm1.onrender.com/add-product";
+    // const urlServer = "http://localhost:5000/add-product";
 
     const formData = new FormData();
 
@@ -85,6 +89,10 @@ const AddProducts: FC = () => {
     }
   };
 
+  const gotoChangeCollectionImages = () => {
+    navigate("/collection-images");
+  };
+
   useEffect(() => {
     console.log("title:", title);
   }, [title]);
@@ -107,6 +115,15 @@ const AddProducts: FC = () => {
         <title>AddProducts</title>
       </Helmet>
       <div className="w-full border border-[3px] border-green-600">
+        <p className="text-center mt-[1em] text-[18px]">
+          Change collection images{" "}
+          <button
+            className="text-blue-600 underline"
+            onClick={gotoChangeCollectionImages}
+          >
+            here
+          </button>
+        </p>
         <form className="flex flex-col gap-[2em] rounded-[12px] shadow-md shadow-[6px_6px_12px_6px_rgba(0,0,0,0.3)] p-[1em] mx-auto w-[510px] my-[3em]">
           <div className="grid grid-cols-[72px_1fr] items-center gap-[1em] w-full">
             <label htmlFor="title">Title</label>

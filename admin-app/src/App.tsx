@@ -23,6 +23,9 @@ const Products = lazy(() => {
 const AddProducts = lazy(() => {
   return import("./pages/AddProducts");
 });
+const ChangeCollectionImages = lazy(() => {
+  return import("./pages/ChangeCollectionImages");
+});
 
 const App: FC = () => {
   const loading: JSX.Element = (
@@ -71,6 +74,14 @@ const App: FC = () => {
           element: (
             <Suspense fallback={loading}>
               <Login />
+            </Suspense>
+          ),
+        },
+        {
+          path: "/collection-images",
+          element: (
+            <Suspense fallback={loading}>
+              <ChangeCollectionImages />
             </Suspense>
           ),
         },
